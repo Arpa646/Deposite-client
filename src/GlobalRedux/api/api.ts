@@ -9,10 +9,22 @@ export const baseApi = createApi({
   }),
   tagTypes: ["user", "recipe"],
   endpoints: (builder) => ({
-    // Define your endpoints here
+    signUp: builder.mutation({
+        query: (user) => {
+          // Log the user object before sending the API request
+          console.log("User being sent to API:", user);
+  
+          return {
+            url: "/auth/create-user",
+            method: "POST",
+            body: user,
+          };
+        },
+        invalidatesTags: ["user"],
+      }),
   }),
 });
 
 export const {
-  // Export hooks for your endpoints here (e.g., useGetUserQuery)
+    useSignUpMutation
 } = baseApi;
