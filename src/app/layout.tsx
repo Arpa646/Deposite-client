@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { Providerss } from "../GlobalRedux/provider";
 export const metadata: Metadata = {
   title: "BankAccount",
   description: "Account",
@@ -23,8 +24,11 @@ export default function RootLayout({
       </head>
       <body className={`antialiased`}>
      
+      <Providerss>
+       
             <div className="">{children}</div>
-    
+       
+        </Providerss>
       </body>
     </html>
   );
