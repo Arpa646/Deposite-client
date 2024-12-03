@@ -22,6 +22,25 @@ export const baseApi = createApi({
       invalidatesTags: ["user"],
     }),
 
+
+
+
+    addBalance: builder.mutation({
+        query: (addBalance) => {
+          console.log("Adding balance:", addBalance); // Log the addBalance parameter
+          return {
+            url: `/auth/add-balance`, // Assuming the userId is inside addBalance
+            method: "PUT",
+            body: addBalance, // Sending the full addBalance object in the body
+          };
+        },
+        invalidatesTags: ["user"],
+      }),
+
+
+
+
+
     getUser: builder.query({
       query: () => ({
         url: "/auth",
@@ -35,5 +54,6 @@ export const baseApi = createApi({
 // Export hooks for the defined endpoints
 export const {
   useSignUpMutation,
-  useGetUserQuery, // Fixed hook name for the `getUser` query
+  useGetUserQuery,
+  useAddBalanceMutation // Fixed hook name for the `getUser` query
 } = baseApi;
